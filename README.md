@@ -1,6 +1,7 @@
 # SC-500 course code
 
-Code for the Cloudxeus course **SC-500**. Each folder is one section of the course, under the same
+Code for the Cloudxeus course **SC-500: Implementing End-to-End Security Controls for Cloud and AI
+Workloads**. Each folder is one section of the course, under the same name you see in the videos.
 name you see in the videos.
 
 | Section |
