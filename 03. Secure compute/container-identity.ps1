@@ -1,0 +1,11 @@
+az container create `
+  --resource-group <your-resource-group> `
+  --name web-dev-eus-01 `
+  --image "<your-registry>.azurecr.io/webapp:v1" `
+  --acr-identity /subscriptions/<your-subscription-id>/resourcegroups/<your-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<your-managed-identity> `
+  --assign-identity /subscriptions/<your-subscription-id>/resourcegroups/<your-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<your-managed-identity> `
+  --ip-address Public `
+  --ports 8080 `
+  --os-type Linux `
+  --cpu 1 `
+  --memory 1.5

@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+
+kind: RoleBinding
+
+metadata:
+  name: developers-view
+  namespace: cloudxeus-app
+
+subjects:
+
+- kind: Group
+  name: "<your-entra-group-object-id>"
+  apiGroup: rbac.authorization.k8s.io
+
+roleRef:
+
+  kind: ClusterRole
+  name: view
+  apiGroup: rbac.authorization.k8s.io

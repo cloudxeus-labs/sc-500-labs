@@ -1,0 +1,11 @@
+az storage blob list \
+  --account-name "<your-storage-account>" \
+  --container-name "documents" \
+  --account-key "" \
+  --output table
+
+az storage blob list \
+  --account-name "<your-storage-account>" \
+  --container-name "documents" \
+  --auth-mode login \
+  --output table

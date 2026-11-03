@@ -1,0 +1,46 @@
+apiVersion: '2021-10-01'
+location: eastus
+name: webapp-instance
+type: Microsoft.ContainerInstance/containerGroups
+
+identity:
+  type: UserAssigned
+  userAssignedIdentities:
+    '/subscriptions/<your-subscription-id>/resourcegroups/<your-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<your-managed-identity>': {}
+
+properties:
+
+  containers:
+
+  - name: frontend
+    properties:
+      image: <your-registry>.azurecr.io/webapp:v2
+      resources:
+        requests:
+          cpu: 0.5
+          memoryInGB: 1.0
+      ports:
+      - protocol: TCP
+        port: 8080
+
+  - name: backend
+    properties:
+      image: <your-registry>.azurecr.io/backend:v1
+      resources:
+        requests:
+          cpu: 0.5
+          memoryInGB: 1.0
+
+  imageRegistryCredentials:
+  - server: <your-registry>.azurecr.io
+    identity: '/subscriptions/<your-subscription-id>/resourcegroups/<your-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<your-managed-identity>'
+
+  restartPolicy: Always
+
+  ipAddress:
+    type: Public
+    ports:
+    - protocol: TCP
+      port: 8080
+
+  osType: Linux
